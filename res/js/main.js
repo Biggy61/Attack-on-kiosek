@@ -1,3 +1,9 @@
+import { Character } from "./characters/Character.js";
+import { Background } from "./ui/basic-utils.js";
+
+const background = new Background();
+
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 const keys = {};
@@ -14,11 +20,14 @@ console.log(names[2]); // Radim
 console.log(names[4]); // 8
 names[4] = "Honza";
 console.log(names[4]); //honza
+
+
 */
 
 /*
 // key: value
 // klic: hodnota
+//vlastnosit objektu - atributy
 const urban = {
     hp: 1000,
     dmg: 1,
@@ -52,6 +61,7 @@ const gameLoop = () => {
     clearCanvas();
     //update
 
+
     update();
     //render animaci
      render();
@@ -68,8 +78,7 @@ const resizeCanvas = () => {
 
 };
 const clearCanvas = () => {
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, 1280, 720)
+    background.draw(ctx);
 };
 const update = () => {};
 const render = () => {};
