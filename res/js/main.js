@@ -1,10 +1,10 @@
 import { Character } from "./characters/Character.js";
 import { Background } from "./ui/basic-utils.js";
 
-const frafta = new Character("Frafta", 100, 1, 0.1, 0);
+const frafta = new Character("Frafta", 100, 1, 5, 0);
+const unrealurbic = new Character("UnrealUrbic", 900, 1, 0.5, 1);
 
 const background = new Background();
-
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -42,52 +42,46 @@ urban.hp -= 500;
 console.log(urban.hp);
 */
 
-
-
 //keydown - kdyz zmacknu
 //keyup - kdyz pustim klavesu
 
 document.addEventListener("keydown", (e) => {
-    keys[e.code] = true;
+  keys[e.code] = true;
 });
 document.addEventListener("keyup", (e) => {
-    keys[e.code] = false;
+  keys[e.code] = false;
 });
- 
-
-
 
 // hlavni smycka hry
 const gameLoop = () => {
-    
-    
-    //resize
-    resizeCanvas();
-    //clearCanvas
-    clearCanvas();
-    //update
+  //resize
+  resizeCanvas();
+  //clearCanvas
+  clearCanvas();
+  //update
 
+  update();
+  //render animaci
+  render();
 
-    update();
-    //render animaci
-     render();
+  //fps
+  getFps();
 
-    //fps
-    getFps();
-
-    window.requestAnimationFrame(gameLoop);
-}
+  window.requestAnimationFrame(gameLoop);
+};
 
 const resizeCanvas = () => {
-    canvas.width = 1280;
-    canvas.height = 720;
-
+  canvas.width = 1280;
+  canvas.height = 720;
 };
 const clearCanvas = () => {
-    background.draw(ctx);
+  background.draw(ctx);
 };
 const update = () => {
-    
+  frafta.update(0);
+  unrealurbic.update(0);
+
+  /*
     if(frafta.position.x >= 640){
         frafta.update(1);
         frafta.hp--;
@@ -99,15 +93,15 @@ const update = () => {
     }
     else{
         frafta.update(0);
-    }
+    }*/
 };
 const render = () => {
-    frafta.draw(ctx);
+  frafta.draw(ctx);
+  unrealurbic.draw(ctx);
 };
 const getFps = () => {};
 
-
 //kdyz se stranka nacte, spustime funkci
 window.onload = () => {
-    window.requestAnimationFrame(gameLoop);
-}
+  window.requestAnimationFrame(gameLoop);
+};
