@@ -1,8 +1,11 @@
 import { Character } from "./characters/Character.js";
 import { Background } from "./ui/basic-utils.js";
 
-const frafta = new Character("Frafta", 100, 1, 5, 0);
-const unrealurbic = new Character("UnrealUrbic", 900, 1, 0.5, 1);
+//pole - uschovava postavy pro hrace
+const friendly = [];
+
+//pole - uschovava postavy pro pocitac
+const enemies = [];
 
 const background = new Background();
 
@@ -78,8 +81,7 @@ const clearCanvas = () => {
   background.draw(ctx);
 };
 const update = () => {
-  frafta.update(0);
-  unrealurbic.update(0);
+ detectCollision();
 
   /*
     if(frafta.position.x >= 640){
@@ -95,13 +97,44 @@ const update = () => {
         frafta.update(0);
     }*/
 };
+
+const detectCollision = () => {
+  friendly.map((a) => {
+    enemies.map((b) => {
+    Character.detectCollision(a, b);
+    });
+  });
+}
 const render = () => {
-  frafta.draw(ctx);
-  unrealurbic.draw(ctx);
+  //a - postava ktera je v poli zrovna na rade
+  friendly.map((a) => {
+    a.draw(ctx);
+  });
+  enemies.map((a) => {
+    a.draw(ctx);
+  });
 };
 const getFps = () => {};
 
+const loadData = async () => {
+  const file = await fetch("./res/data/characters.json");
+  const data = await file.json();
+  Character.charactersData = data;
+
+};
+
+const prerender = () => {
+  friendly.push(new Character("UnrealUrbic"));
+  enemies.push(new Character("Frafticek"));
+};
+
 //kdyz se stranka nacte, spustime funkci
-window.onload = () => {
+window.onload = async () => {
+  //nacteme soubor
+  await loadData();
+  //prerenderujeme postavy
+  prerender();
+  //spustime hru
   window.requestAnimationFrame(gameLoop);
+
 };

@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Frafticek",
+    "stats": {
+      "hp": 1000,
+      "dmg": 1,
+      "speed": 1,
+      "velocity": -1,
+      "side": 1,
+      "position": 1100
+    },
+    "sprites": {
+      "movement": {
+        "path": "./res/img/characters/frafticekWalk.png",
+        "frames": 11,
+        "size": {
+          "width": 100,
+          "height": 100
+        }
+      },
+      "attack": {
+        "path": "./res/img/characters/frafticekAttack.png",
+        "frames": 11,
+        "size": {
+          "width": 100,
+          "height": 100
+        }
+      }
+    }
+  },
+
+  {
+    "name": "UnrealUrbic",
+    "stats": {
+      "hp": 1000,
+      "dmg": 1,
+      "speed": 1,
+      "velocity": 1,
+      "side": 0,
+      "position": 100
+    },
+    "sprites": {
+      "movement": {
+        "path": "./res/img/characters/urbicWalk.png",
+        "frames": 11,
+        "size": {
+          "width": 100,
+          "height": 100
+        }
+      },
+      "attack": {
+        "path": "./res/img/characters/urbicAttack.png",
+        "frames": 10,
+        "size": {
+          "width": 100,
+          "height": 100
+        }
+      }
+    }
+  }
+]
