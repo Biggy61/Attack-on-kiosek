@@ -127,6 +127,7 @@ const detectCollision = () => {
 }
 const render = () => {
   //a - postava ktera je v poli zrovna na rade
+  //map - jako foreach
   friendly.map((a) => {
     a.draw(ctx);
   });
