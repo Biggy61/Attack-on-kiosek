@@ -1,5 +1,10 @@
 import { Character } from "./characters/Character.js";
 import { Background } from "./ui/basic-utils.js";
+const urbicSpawn = document.getElementById("urbicSpawn");
+
+urbicSpawn.addEventListener("click", () => {
+  friendly.push(new Character("UnrealUrbic"));
+});
 
 //pole - uschovava postavy pro hrace
 const friendly = [];
@@ -81,8 +86,15 @@ const clearCanvas = () => {
   background.draw(ctx);
 };
 const update = () => {
- detectCollision();
-
+ 
+ friendly.map((a) => {
+  a.update();
+ });
+  enemies.map((b) => {
+  b.update();
+  });
+  
+detectCollision();
   /*
     if(frafta.position.x >= 640){
         frafta.update(1);
@@ -99,11 +111,19 @@ const update = () => {
 };
 
 const detectCollision = () => {
-  friendly.map((a) => {
+  for (const a of friendly) {
+    for (const b of enemies) {
+      if (Character.detectCollision(a, b)) {
+      return;
+    } 
+    }
+    
+  }
+  /*friendly.map((a) => {
     enemies.map((b) => {
-    Character.detectCollision(a, b);
+    
     });
-  });
+  });*/
 }
 const render = () => {
   //a - postava ktera je v poli zrovna na rade

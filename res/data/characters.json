@@ -3,7 +3,7 @@
     "name": "Frafticek",
     "stats": {
       "hp": 1000,
-      "dmg": 1,
+      "dmg": 2,
       "speed": 1,
       "velocity": -1,
       "side": 1,
@@ -33,7 +33,7 @@
     "name": "UnrealUrbic",
     "stats": {
       "hp": 1000,
-      "dmg": 1,
+      "dmg": 2,
       "speed": 1,
       "velocity": 1,
       "side": 0,

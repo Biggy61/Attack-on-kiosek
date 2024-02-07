@@ -64,7 +64,7 @@ export class Character {
     //this.frame.height - vyska ramu
     //movementX - souradnice X kde se bude vykreslovat na canvasu obrazek
     //this.position.y - souradnice y kde se bude vykreslovat na canvasu obrazek
-    console.log(this.frame.height)
+   
     ctx.drawImage(
        this.img,
        this.frame.width * this.frame.index,
@@ -146,14 +146,13 @@ export class Character {
       enemy.state = 1;
       friendly.attack(enemy);
       enemy.attack(friendly);
-      friendly.update();
-      enemy.update();
-      return;
+    
+      return true;
      } 
      friendly.state = 0;
      enemy.state = 0;
-     friendly.update();
-     enemy.update();
+     return false;
+ 
   }
 }
 
